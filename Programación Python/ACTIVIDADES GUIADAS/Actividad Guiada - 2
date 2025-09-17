@@ -1,0 +1,10 @@
+#VisualStudio tiene varias ventajas sobre Python:IDLE.
+#1. VisualStudio cuenta con una función que autocompleta tu código.
+#2. VisualStudio cuenta con un sistema de Debug para detectar errores.
+
+var1=int(input("introduce un número: "))
+var2=int(input("introduce otro número: "))
+
+total=var1+var2
+
+print("El total de la suma de ambos números es", total)
