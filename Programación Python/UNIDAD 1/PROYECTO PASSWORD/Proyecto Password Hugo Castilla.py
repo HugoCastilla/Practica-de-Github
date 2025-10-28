@@ -10,12 +10,3 @@ print ("7º carácter: Uno de estos símbolos: &, /, #.")
 print ("8º carácter: Un número menor o igual a 5 (No puede ser negativo).")
 
 str(input("Siguiendo las indicaciones, introduzca su contraseña: "))
-
-err1=0
-err2=0
-err3=0
-err4=0
-err5=0
-err6=0
-err7=0
-err8=0
