@@ -61,7 +61,7 @@ if len(password)>=6 and 8>=len(password):
             err8="Error en el 8º caràcter."
     #mostramos los errores que tiene la contraseña
     if err1=="" and err2=="" and err3=="" and err4=="" and err5=="" and err6=="" and err7=="" and err8=="":
-        print("El formato de la contraseña es correcto")
+        print("El formato de la contraseña es correcto.")
     else:
         print(f"{err1} {err2} {err3} {err4} {err5} {err6} {err7} {err8}")
 else:
