@@ -1,12 +1,12 @@
 #definimos las variables que indican en que caràcter se encuentra el error
-err1=0
-err2=0
-err3=0
-err4=0
-err5=0
-err6=0
-err7=0
-err8=0
+err1=""
+err2=""
+err3=""
+err4=""
+err5=""
+err6=""
+err7=""
+err8=""
 
 #mostramos por pantalla las indicaciones que el usuario ha de cumplir
 print("Bienvenido al programa. Siga las indicaciones para introducir su contraseña:")
@@ -26,48 +26,48 @@ password=str(input("Siguiendo las indicaciones, introduzca su contraseña: "))
 
 if len(password)>=6 and 8>=len(password):
     if password[0]<="5" and password[0]>="1":
-        print("bien")
+        err1=("")
     else:
-        err1=1
-        print("mal")
+        err1="Error en el 1º caràcter."
     if password[1].islower():
-        print("bien")
+        err2=("")
     else:
-        err2=1
-        print("mal")
+        err2="Error en el 2º caràcter."
     if password[2].isupper():
-        print("bien")
+        err3=("")
     else:
-        err3=1
-        print("mal")
+        err3="Error en el 3º caràcter."
     if password[3]=="*" or password[3]=="_" or password[3]=="@":
-        print("bien")
+        err4=("")
     else:
-        err4=1
-        print("mal")
+        err4="Error en el 4º caràcter."
     if password[4].islower():
-        print("bien")
+        err5=("")
     else:
-        err5=1
-        print("mal")
+        err5="Error en el 5º caràcter."
     if password[5]>="6" and password[5]<="9":
-        print("bien")
+        err6=("")
     else:
-        err6=1
-        print("mal")
-    if password[6]=="&" or password[6]=="/" or password[6]=="#":
-        print("bien")
+        err6="Error en el 6º caràcter."
+    if len(password)>6:
+        if password[6]=="&" or password[6]=="/" or password[6]=="#":
+            err7=("")
+        else:
+            err7="Error en el 7º caràcter."
+    if len(password)>7:
+        if password[7]>="0" and password[7]<="5":
+            err8=("")
+        else:
+            err8="Error en el 8º caràcter."
+    #mostramos los errores que tiene la contraseña
+    if err1=="" and err2=="" and err3=="" and err4=="" and err5=="" and err6=="" and err7=="" and err8=="":
+        print("El formato de la contraseña es correcto.")
     else:
-        err7=1
-        print("mal")
-    if password[7]>="0" and password[5]<="5":
-        print("bien")
-    else:
-        err8=1
-        print("mal")
-
+        print(f"{err1} {err2} {err3} {err4} {err5} {err6} {err7} {err8}")
 else:
     if len(password)>8:
-        print("Su contraseña excede el número de carácteres solicitados.")
+        carac=len(password)
+        print(f"Su contraseña de {carac} carácteres excede los carácteres requeridos.")
     else:
-        print("Su contraseña no alcanza el número de carácteres solicitados.")
+        carac=len(password)
+        print(f"Su contraseña de {carac} carácteres no alcanza los carácteres requeridos.")
