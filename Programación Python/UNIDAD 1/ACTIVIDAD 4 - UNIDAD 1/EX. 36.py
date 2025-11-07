@@ -1,5 +1,4 @@
 #Programa que sume los n primeros números naturales. n lo introduce el usuario.
-
 num=int(input("Introduce un número entero positivo: "))
 
 if num>0:
