@@ -1,2 +1,0 @@
-#esvas
-#tica
