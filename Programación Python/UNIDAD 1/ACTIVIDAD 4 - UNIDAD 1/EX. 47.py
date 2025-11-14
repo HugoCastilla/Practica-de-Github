@@ -3,11 +3,10 @@
 intervalo1=int(input("Introduce el primer intervalo: "))
 intervalo2=int(input("Introduce el segundo intervalo: "))
 
-for i in range(intervalo1, intervalo2+1):
-    if intervalo1<intervalo2:
-        print(i, end="-" if i < intervalo2 else "")
-    elif intervalo1>intervalo2:
-        print(i, end="-" if i > intervalo1 else "")
+if intervalo1<intervalo2:
+    for i in range(intervalo1,intervalo2+1):
+        print(i, end="-" if i<intervalo2 else ".")
 
-
-#WIP
+if intervalo1>intervalo2:
+    for l in range(intervalo1, intervalo2-1,-1):
+        print(l, end="-" if l>intervalo2 else ".")
