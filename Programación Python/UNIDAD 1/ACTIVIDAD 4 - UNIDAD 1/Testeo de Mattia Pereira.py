@@ -1,3 +1,5 @@
+#FOR
+
 repeticiones=int(input("Introduce numero de repeticiones: "))
 total=0
 for h in range (repeticiones):

@@ -1,3 +1,5 @@
+#FOR
+
 #definimos las variables
 password="a82yabei29"
 total=0
