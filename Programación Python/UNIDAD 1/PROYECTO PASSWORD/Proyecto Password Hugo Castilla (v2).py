@@ -58,7 +58,6 @@ while intentos!=3:
             print("Error. Su contraseña no cuenta con suficientes de estos símbolos: *, _ , @, &, /, #.")
         
         if uncin>=2 and sesnuev>=1 and upper>=1 and lower>=2 and simb>=2:
-            print("")
             print("Contraseña correcta.")
             print("")
 
@@ -78,3 +77,11 @@ while intentos!=3:
         else:
             print(f"Ya ha introducido {intentos} contraseñas.")
             print("")
+
+
+#INTENTOS DE CONTRASEÑAS:
+# - 623MMmm** - Correcta
+# - 623Mmm** - Correcta
+# - "" - Incorrecta (Menos de 8 caracteres)
+# - 99999999999999999iLoP@&13 - Correcta
+# - 10Kjp&88 - Incorrecta (Menos de dos números entre 1 y 5)(Menos de 2 símbolos)
