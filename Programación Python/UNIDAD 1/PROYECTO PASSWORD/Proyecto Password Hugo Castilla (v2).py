@@ -22,6 +22,7 @@ while intentos!=3:
     #calculamos la longitud de la contraseña y comprobamos si es correcta
 
     password=str(input("Siguiendo las indicaciones, introduzca su contraseña: "))
+    print("")
     intentos=intentos+1
 
     if len(password)>=8:
@@ -30,11 +31,11 @@ while intentos!=3:
             dig=str(dig)
             if dig.isdigit():
                 dig=int(dig)
-                if dig>=1 or dig<=5:
+                if dig>=1 and dig<=5:
                     uncin=uncin+1
-                elif dig==0:
+                if dig==0:
                     uncin=uncin
-                else:
+                if dig>=6 and dig<=9:
                     sesnuev=sesnuev+1
             elif dig.isalpha():
                 if dig.isupper():
@@ -44,18 +45,36 @@ while intentos!=3:
             else:
                 if dig in sym:
                     simb=simb+1
-
-
-
+        
+        if uncin<2:
+            print("Error. Su contraseña no cuenta con suficientes números entre 1 y 5.")
+        if sesnuev<1:
+            print("Error. Su contraseña no cuenta con suficientes números entre el 6 y el 9.")
+        if upper<1:
+            print("Error. Su contraseña no cuenta con suficientes letras mayúsculas.")
+        if lower<2:
+            print("Error. Su contraseña no cuenta con suficientes letras minúsculas")
+        if simb<2:
+            print("Error. Su contraseña no cuenta con suficientes de estos símbolos: *, _ , @, &, /, #.")
+        
+        if uncin>=2 and sesnuev>=1 and upper>=1 and lower>=2 and simb>=2:
+            print("")
+            print("Contraseña correcta.")
+            print("")
 
         if intentos==1:
             print(f"Ya ha introducido {intentos} contraseña.")
+            print("")
         else:
             print(f"Ya ha introducido {intentos} contraseñas.")
+            print("")
     else:
         print("")
         print(f"Su contraseña '{password}' es demasiado corta.")
+        print("")
         if intentos==1:
             print(f"Ya ha introducido {intentos} contraseña.")
+            print("")
         else:
             print(f"Ya ha introducido {intentos} contraseñas.")
+            print("")
