@@ -91,6 +91,7 @@ print(f"Ha introducido {correcto} contraseña/s correctas y {incorrecto} contras
 
 
 #INTENTOS DE CONTRASEÑAS:
+
 # - 623MMmm** - Correcta
 
 # - 623Mmm** - Correcta
@@ -101,8 +102,6 @@ print(f"Ha introducido {correcto} contraseña/s correctas y {incorrecto} contras
 
 # - 10Kjp&88 - Incorrecta (Menos de dos números entre 1 y 5)(Menos de 2 símbolos)
 
-# - **ççÇ1.2//9mmjjkhafksghefjkvnhuigyufghekjghreuifgeyishgkgyiwyeyü - Correcta
-
 # - 1234567890qwertyuiopasdfghjklñçzxcvbnm!@#$%&/() - Correcta
 
 # - 23tT_8 - Incorrecta (Menos de 8 caracteres)
@@ -111,3 +110,4 @@ print(f"Ha introducido {correcto} contraseña/s correctas y {incorrecto} contras
 
 # - x2ge7cv4c27r$%&% - Incorrecta (Menos de 2 mayúsculas)(Menos de dos símbolos)
 
+# - ccacahuUetes91873 - Incorrecta (Menos de 2 símbolos)
