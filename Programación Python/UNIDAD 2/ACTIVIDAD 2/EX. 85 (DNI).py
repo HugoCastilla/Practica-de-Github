@@ -32,13 +32,14 @@ while seguir=="s":
     seguir=input("¿Quieres introducir otro DNI? (s/n): ")
 opcion=""
 
-while opcion !="5":
+while opcion !="6":
     print("MENÚ")
     print("1. Listar DNIs correctos")
     print("2. Listar DNIs incorrectos")
-    print("3. Estadísticas")
-    print("4. Lista de intentos")
-    print("5. Salir")
+    print("3. Número total de errores")
+    print("4. Número total de DNIs correctos")
+    print("5. Porcentage de DNI correcto")
+    print("6. Salir")
 
     opcion=input("Elige una opción: ")
     if opcion=="1":
@@ -52,26 +53,17 @@ while opcion !="5":
         for d in dnimal:
             print(d)
     elif opcion=="3":
-        total=len(intentos)
-        correctos=intentos.count(3)
-        errlong=intentos.count(0)
-        errnum=intentos.count(1)
-        ernesto=intentos.count(2)
-        incorrectos=total - correctos
-        if total>0:
-            print("Total DNIs:", total)
-            print("Correctos:", correctos)
-            print("Incorrectos:", incorrectos)
-            print("% Correctos:", (correctos*100)/total)
-            print("% Incorrectos:", (incorrectos*100)/total)
-            print("Errores de longitud:", errlong)
-            print("Errores no numericos:", errnum)
-            print("Errores de resto:", ernesto)
-        else:
-            print("No se han introducido DNIs")
+        toterr=intentos.count(0)+intentos.count(1)+intentos.count(2)
+        print("Número total de errores:", toterr)
     elif opcion=="4":
-        print("Lista de intentos:", intentos)
+        totcor=intentos.count(3)
+        print("Número total de DNIs correctos:", totcor)
     elif opcion=="5":
-        print("Programa finalizado.")
-    else:
-        print("Opción incorrecta")
+        total=intentos.count(0)+intentos.count(1)+intentos.count(2)+intentos.count(3)
+        if total==0:
+            print("No se han ingresado DNIs.")
+        else:
+            porcentaje=(intentos.count(3)/total)*100
+            print("Porcentaje de DNIs correctos: {:.2f}%".format(porcentaje))
+    elif opcion=="6":
+        print("Fin del programa.")
