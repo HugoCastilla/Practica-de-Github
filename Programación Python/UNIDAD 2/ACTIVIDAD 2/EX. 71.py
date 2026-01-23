@@ -4,7 +4,12 @@ lista=[]
 while seguir=="S":
     letra=input("Introduce una letra: ")
     if letra not in lista:
-        lista.append(letra)
-        print("Lista actual:", lista)
+        if letra.isalpha():
+            lista.append(letra)
+            print("Lista actual:", lista)
+        else:
+            print("Error. Ese carácter no es una letra.")
+    else:
+        print("Esa letra ya está en la lista o no es una letra.")
     seguir=input("¿Quieres introducir otra letra? (S/N) ")
 print("Programa finalizado.")
