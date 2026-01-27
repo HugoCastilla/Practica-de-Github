@@ -3,8 +3,13 @@
 num=int(input("Introduce una cantidad de palabras: "))
 
 lista=[]
+lista2=[]
 
 for i in range(num):
-    lista.append(input("Introduce una palabra: "))
+    palabra=input("Introduce una palabra: ")
+    lista.append(palabra)
+    lista.append(palabra)
 
-print(list(set(lista)))
+lista2.reverse
+print[lista]
+
