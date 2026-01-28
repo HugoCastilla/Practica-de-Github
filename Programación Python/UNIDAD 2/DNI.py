@@ -41,6 +41,7 @@ while seguir!="n":
             dnibien.append(dni+"-"+letra)
     #ponemos lower para que si introduce la "n" mayúscula cuente también
     seguir=input("¿Quieres introducir otro DNI? (s/n): ").lower()
+<<<<<<< HEAD
 
 while opcion !="6":
     #mostramos las opciones posibles, uso prints vacios para dejar un poco de espacio en la salida y que quede mejor visualmente
@@ -92,3 +93,5 @@ while opcion !="6":
         print("Fin del programa.")
     else:
         print("Error. Esa opción no esta en la lista.")
+=======
+>>>>>>> e809a9f8790d631764ce4b27f69182136a0de1fb
