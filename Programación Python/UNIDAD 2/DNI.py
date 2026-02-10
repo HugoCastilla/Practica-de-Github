@@ -11,7 +11,6 @@ intentos=[]
 dnibien=[]
 dnimal=[]
 seguir="s"
-seseguir=""
 opcion=""
 #hacemos que el bucle se repita hasta que el usuario diga "n"
 while seguir!="n":
@@ -41,12 +40,7 @@ while seguir!="n":
             totcor=totcor+1
             dnibien.append(dni+"-"+letra)
     #ponemos lower para que si introduce la "n" o la "s" mayúscula cuente también
-    seseguir=""
-    while seseguir!="s" or "n":
-        seseguir=input("¿Quieres introducir otro DNI? (s/n): ").lower()
-        seguir=seseguir
-        if seseguir!="s" or "n":
-            print("Error.")
+    seguir=input("¿Quieres introducir otro DNI? (s/n): ").lower()
 
 while opcion !="6":
     #mostramos las opciones posibles, uso prints vacios para dejar un poco de espacio en la salida y que quede mejor visualmente
