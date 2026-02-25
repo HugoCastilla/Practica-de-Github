@@ -7,12 +7,18 @@ lista_ahorcado=[]
 errores=0
 palabra=""
 modo=""
+listaerrores=[]
 
 seguir="s"
 print("Bienvenido al juego del ahorcado")
 seguir=input("Quieres echar una partida? (s/n): ").lower()
 
-while seguir=="s":
+while seguir!="n":
+    while seguir!="s" and seguir!="n":
+        print("¡Esa no es una respuesta válida!")
+        seguir=input("Quieres echar una partida? (s/n): ").lower()
+    if seguir=="n":
+        break
     modo=""
     print("1. Modo fácil (El ahorcado de toda la vida)")
     print("2. Modo acentos (El ahorcado distingue entre vocales acentuadas y no acentuadas)")
