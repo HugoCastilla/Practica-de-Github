@@ -1,13 +1,22 @@
+from pydoc import text
 import random
 import time
 
 lista_partida=[]
 lista_palabrasecreta=[]
+lista_acentos=[]
 lista_ahorcado=[]
 errores=0
 palabra=""
 modo=""
 listaerrores=[]
+numvictorias=0
+numderrotas=0
+palabranueva=""
+listanoacentos=["perro","gato","elefante","jirafa","tigre","mono","pez","serpiente", "conejo","tortuga"]
+listasiacentos=["plutón","arlequín","árbol","canción","corazón","teléfono","camión","avión","ratón","león"]
+lista_aciertos=[]
+lista_errores=[]
 
 seguir="s"
 print("Bienvenido al juego del ahorcado")
@@ -19,7 +28,21 @@ while seguir!="n":
         seguir=input("Quieres echar una partida? (s/n): ").lower()
     if seguir=="n":
         break
+    print(f"Victorias: {numvictorias} | Derrotas: {numderrotas}")
+    print("")
     modo=""
+    palabranueva=input("Quieres introducir una palabra nueva? (s/n): ").lower()
+    while palabranueva!="s" and palabranueva!="n":
+        print("¡Esa no es una respuesta válida!")
+        palabranueva=input("Quieres introducir una palabra nueva? (s/n): ").lower()
+    if palabranueva=="s":
+        palabranueva=input("Introduce la palabra nueva: ").lower()
+        if "áéíóú" in palabranueva:
+            listasiacentos.append(palabranueva)
+        else:
+            listanoacentos.append(palabranueva)
+    lista_aciertos.clear()
+    lista_errores.clear()
     print("1. Modo fácil (El ahorcado de toda la vida)")
     print("2. Modo acentos (El ahorcado distingue entre vocales acentuadas y no acentuadas)")
     print("3. Modo difícil (Solo tres oportunidades para fallar)")
@@ -27,13 +50,13 @@ while seguir!="n":
     while modo!="1" and modo!="2" and modo!="3" and modo!="4":
         modo=input("¿Qué modo quieres jugar? (1/2/3/4): ")
         if modo=="1":
-            lista_palabrasecreta.append(random.choice(["guatemalteco","perro","gato","elefante","jirafa","tigre","mono","pez","serpiente", "conejo","tortuga","cocodrilo","rinoceronte","cebra","camello","ballena","pulpo","medusa","caracol","mariposa","abeja","hormiga","araña","mosquito","mosca","grillo","saltamontes","cucaracha","termita","avispa","escarabajo","gallina","pato","pavo","ganso","flamenco","cisne","buitre", "lechuza", "paloma", "cuervo", "loro", "canario", "periquito", "cotorra", "agapornis", "guacamayo", "cardenal", "azulejo", "jilguero", "mirlo", "petirrojo", "ruiseñor", "zorzal", "tordo", "alondra", "avioneta", "planeador", "cohete", "ovni", "astronauta","marte","venus","saturno","urano","neptuno", "sol","luna","estrella","galaxia","universo","cometa","meteorito", "supernova", "agujero", "negro", "blanco", "rojo", "azul", "verde", "amarillo", "naranja", "morado", "rosa", "gris", "marron", "violeta" ]))
+            lista_palabrasecreta.append(random.choice(listanoacentos))
         elif modo=="2":
-            lista_palabrasecreta.append(random.choice(["plutón","arlequín","árbol","canción","corazón","teléfono","camión","avión","ratón","león","camión","papá","mamá","sofá","café","azúcar","limón","melón", ]))
+            lista_palabrasecreta.append(random.choice(listasiacentos))
         elif modo=="3":        
-            lista_palabrasecreta.append(random.choice(["guatemalteco","perro","gato","elefante","jirafa","tigre","mono","pez","serpiente", "conejo","tortuga","cocodrilo","rinoceronte","cebra","camello","ballena","pulpo","medusa","caracol","mariposa","abeja","hormiga","araña","mosquito","mosca","grillo","saltamontes","cucaracha","termita","avispa","escarabajo","gallina","pato","pavo","ganso","flamenco","cisne","buitre", "lechuza", "paloma", "cuervo", "loro", "canario", "periquito", "cotorra", "agapornis", "guacamayo", "cardenal", "azulejo", "jilguero", "mirlo", "petirrojo", "ruiseñor", "zorzal", "tordo", "alondra", "avioneta", "planeador", "cohete", "ovni", "astronauta","marte","venus","saturno","urano","neptuno", "sol","luna","estrella","galaxia","universo","cometa","meteorito", "supernova", "agujero", "negro", "blanco", "rojo", "azul", "verde", "amarillo", "naranja", "morado", "rosa", "gris", "marron", "violeta", "celeste", "turquesa", "fucsia", "lila", "beige", "dorado", "plateado","cielo","mar","montaña","bosque","desierto","selva","pradera","isla","laguna","cascada","glaciar","cueva","valle","colina","playa","arena","roca","piedra","flor","hierba","hoja","fruto","semilla", "tallo", "rama", "tronco", "corteza", "flor", "fruto", "semilla", "hoja", "hierba", "maleza", "arbusto", "seto", "parque", "bosque", "selva","desierto","pradera","isla","laguna","cascada","glaciar","cueva","valle","colina","playa","arena","roca","piedra"]))
+            lista_palabrasecreta.append(random.choice(listanoacentos))
         elif modo=="4":
-            lista_palabrasecreta.append(random.choice(["guatemalteco","perro","gato","elefante","jirafa","tigre","mono","pez","serpiente", "conejo","tortuga","cocodrilo","rinoceronte","cebra","camello","ballena","pulpo","medusa","caracol","mariposa","abeja","hormiga","araña","mosquito","mosca","grillo","saltamontes","cucaracha","termita","avispa","escarabajo","gallina","pato","pavo","ganso","flamenco","cisne","buitre", "lechuza", "paloma", "cuervo", "loro", "canario", "periquito", "cotorra", "agapornis", "guacamayo", "cardenal", "azulejo", "jilguero", "mirlo", "petirrojo", "ruiseñor", "zorzal", "tordo", "alondra", "avioneta", "planeador", "cohete", "ovni", "astronauta","marte","venus","saturno","urano","neptuno", "sol","luna","estrella","galaxia","universo","cometa","meteorito", "supernova", "agujero", "negro", "blanco", "rojo", "azul", "verde", "amarillo", "naranja", "morado", "rosa", "gris", "marron", "violeta", "celeste", "turquesa", "fucsia", "lila", "beige", "dorado", "plateado","cielo","mar","montaña","bosque","desierto","selva","pradera","isla","laguna","cascada","glaciar","cueva","valle","colina","playa","arena","roca","piedra","flor","hierba","hoja","fruto","semilla", "tallo", "rama", "tronco", "corteza", "flor", "fruto", "semilla", "hoja", "hierba", "maleza", "arbusto", "seto", "parque", "bosque", "selva","desierto","pradera","isla","laguna","cascada","glaciar","cueva","valle","colina","playa","arena","roca","piedra"]))
+            lista_palabrasecreta.append(random.choice(listanoacentos))
         else:
             print("Ese modo de juego no es válido.")
     palabra=str(lista_palabrasecreta[0].upper())
@@ -49,6 +72,7 @@ while seguir!="n":
             tiempo=round(fintiem-iniciotiem,2)
             if tiempo>30:
                 print(f"¡Has perdido por tiempo! La palabra era: {palabra}")
+                numderrotas=numderrotas+1
                 lista_partida=[]
                 seguir=input("¿Quieres echar otra partida? (s/n): ").lower()
                 if seguir!="s":
@@ -62,6 +86,9 @@ while seguir!="n":
         respuesta=""
         while not respuesta.isalpha():
             respuesta=""
+            print("")
+            print("LETRAS ACERTADAS: ", lista_aciertos)
+            print("LETRAS FALLADAS: ", lista_errores)
             respuesta=input("Di una letra o intenta adivinar la palabra: ").upper()
             if respuesta=="":
                 print("¡No has escrito nada!")
@@ -75,6 +102,9 @@ while seguir!="n":
         if len(respuesta)==1:
             if respuesta==palabra:
                 print((f"¡Has acertado la palabra: {palabra}!"))
+                numvictorias=numvictorias+1
+                fintiem=time.perf_counter()
+                tiempo=round(fintiem-iniciotiem,2)
                 lista_partida=[]
                 seguir=input("¿Quieres echar otra partida? (s/n): ").lower()
                 if seguir!="s":
@@ -89,11 +119,13 @@ while seguir!="n":
                 else:
                     if respuesta in palabra:
                         print((f"¡Has acertado la letra {respuesta}!"))
+                        lista_aciertos.append(respuesta)
                         for i in range(len(palabra)):
                             if palabra[i]==respuesta:
                                 lista_partida[i]=respuesta
                         if "_" not in lista_partida:
                             print((f"¡Has acertado la palabra: {palabra}!"))
+                            numvictorias=numvictorias+1
                             fintiem=time.perf_counter()
                             tiempo=round(fintiem-iniciotiem,2)
                             print(f"Tiempo de juego: {tiempo} segundos")
@@ -108,11 +140,13 @@ while seguir!="n":
                                 break
                     else:
                         print((f"¡La letra {respuesta} no está en la palabra!"))
+                        lista_errores.append(respuesta)
                         if modo=="3":
                              errores+=1
                              print(f"¡Te quedan {3-errores} oportunidades!")
                              if errores==3:
                                 print(f"¡Has perdido! La palabra era: {palabra}")
+                                numderrotas=numderrotas+1
                                 fintiem=time.perf_counter()
                                 tiempo=round(fintiem-iniciotiem,2)
                                 print(f"Tiempo de juego: {tiempo} segundos")
@@ -152,6 +186,7 @@ while seguir!="n":
                                 lista_ahorcado.append("O")
                                 print(lista_ahorcado)
                                 print(f"¡Has perdido! La palabra era: {palabra}")
+                                numderrotas=numderrotas+1
                                 fintiem=time.perf_counter()
                                 tiempo=round(fintiem-iniciotiem,2)
                                 print(f"Tiempo de juego: {tiempo} segundos")
@@ -167,6 +202,7 @@ while seguir!="n":
         else:
             if respuesta==palabra:
                 print((f"¡Has acertado la palabra: {palabra}!"))
+                numvictorias=numvictorias+1
                 fintiem=time.perf_counter()
                 tiempo=round(fintiem-iniciotiem,2)
                 print(f"Tiempo de juego: {tiempo} segundos")
@@ -180,12 +216,13 @@ while seguir!="n":
                     lista_ahorcado=[]
                     break
             else:
-                print((f"¡La palabra {respuesta} no es correcta!"))
+                print((f"¡La palabra {respuesta} no es correcta!")) 
                 if modo=="3":
                              errores+=1
                              print(f"¡Te quedan {3-errores} oportunidades!")
                              if errores==3:
                                 print(f"¡Has perdido! La palabra era: {palabra}")
+                                numderrotas=numderrotas+1
                                 fintiem=time.perf_counter()
                                 tiempo=round(fintiem-iniciotiem,2)
                                 print(f"Tiempo de juego: {tiempo} segundos")
@@ -225,6 +262,7 @@ while seguir!="n":
                         lista_ahorcado.append("O")
                         print(lista_ahorcado)
                         print(f"¡Has perdido! La palabra era: {palabra}")
+                        numderrotas=numderrotas+1
                         fintiem=time.perf_counter()
                         tiempo=round(fintiem-iniciotiem,2)
                         print(f"Tiempo de juego: {tiempo} segundos")
