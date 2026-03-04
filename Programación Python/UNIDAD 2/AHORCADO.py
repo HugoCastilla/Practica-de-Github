@@ -50,12 +50,16 @@ while seguir!="n":
         modo=input("¿Qué modo quieres jugar? (1/2/3/4): ")
         if modo=="1":
             lista_palabrasecreta.append(random.choice(listanoacentos))
+            modonombre="Facil"
         elif modo=="2":
             lista_palabrasecreta.append(random.choice(listasiacentos))
+            modonombre="Acentos"
         elif modo=="3":        
             lista_palabrasecreta.append(random.choice(listanoacentos))
+            modonombre="Dificil"
         elif modo=="4":
             lista_palabrasecreta.append(random.choice(listanoacentos))
+            modonombre="Contrarreloj"
         else:
             print("Ese modo de juego no es válido.")
     palabra=str(lista_palabrasecreta[0].upper())
@@ -71,6 +75,16 @@ while seguir!="n":
             tiempo=round(fintiem-iniciotiem,2)
             if tiempo>30:
                 print(f"¡Has perdido por tiempo! La palabra era: {palabra}")
+                archivo_txt=open("Resultados.txt","a")
+                archivo_txt.write("------------RESULTADOS DE LA PARTIDA------------\n")
+                archivo_txt.write("DERROTA...\n")
+                archivo_txt.write("- TIEMPO: "+str(tiempo)+" segundos\n")
+                archivo_txt.write("- MODO DE JUEGO: "+str(modonombre)+"\n")
+                archivo_txt.write("- PALABRA: "+str(palabra)+"\n")
+                archivo_txt.write("- LETRAS ACERTADAS: "+str(lista_aciertos)+"\n")
+                archivo_txt.write("- LETRAS FALLADAS: "+str(lista_errores)+"\n")
+                archivo_txt.write("- FECHA: "+time.strftime("%d/%m/%Y %H:%M:%S")+"\n")
+                archivo_txt.close()
                 numderrotas=numderrotas+1
                 lista_partida=[]
                 seguir=input("¿Quieres echar otra partida? (s/n): ").lower()
@@ -101,6 +115,16 @@ while seguir!="n":
         if len(respuesta)==1:
             if respuesta==palabra:
                 print((f"¡Has acertado la palabra: {palabra}!"))
+                archivo_txt=open("Resultados.txt","a")
+                archivo_txt.write("------------RESULTADOS DE LA PARTIDA------------\n")
+                archivo_txt.write("VICTORIA!\n")
+                archivo_txt.write("- TIEMPO: "+str(tiempo)+" segundos\n")
+                archivo_txt.write("- MODO DE JUEGO: "+str(modonombre)+"\n")
+                archivo_txt.write("- PALABRA: "+str(palabra)+"\n")
+                archivo_txt.write("- LETRAS ACERTADAS: "+str(lista_aciertos)+"\n")
+                archivo_txt.write("- LETRAS FALLADAS: "+str(lista_errores)+"\n")
+                archivo_txt.write("- FECHA: "+time.strftime("%d/%m/%Y %H:%M:%S")+"\n")
+                archivo_txt.close()
                 numvictorias=numvictorias+1
                 fintiem=time.perf_counter()
                 tiempo=round(fintiem-iniciotiem,2)
@@ -128,6 +152,16 @@ while seguir!="n":
                             fintiem=time.perf_counter()
                             tiempo=round(fintiem-iniciotiem,2)
                             print(f"Tiempo de juego: {tiempo} segundos")
+                            archivo_txt=open("Resultados.txt","a")
+                            archivo_txt.write("------------RESULTADOS DE LA PARTIDA------------\n")
+                            archivo_txt.write("VICTORIA!\n")
+                            archivo_txt.write("- TIEMPO: "+str(tiempo)+" segundos\n")
+                            archivo_txt.write("- MODO DE JUEGO: "+str(modonombre)+"\n")
+                            archivo_txt.write("- PALABRA: "+str(palabra)+"\n")
+                            archivo_txt.write("- LETRAS ACERTADAS: "+str(lista_aciertos)+"\n")
+                            archivo_txt.write("- LETRAS FALLADAS: "+str(lista_errores)+"\n")
+                            archivo_txt.write("- FECHA: "+time.strftime("%d/%m/%Y %H:%M:%S")+"\n")
+                            archivo_txt.close()
                             lista_partida=[]
                             seguir=input("¿Quieres echar otra partida? (s/n): ").lower()
                             if seguir!="s":
@@ -144,7 +178,18 @@ while seguir!="n":
                              errores+=1
                              print(f"¡Te quedan {3-errores} oportunidades!")
                              if errores==3:
+                                tiempo=round(time.perf_counter()-iniciotiem,2)
                                 print(f"¡Has perdido! La palabra era: {palabra}")
+                                archivo_txt=open("Resultados.txt","a")
+                                archivo_txt.write("------------RESULTADOS DE LA PARTIDA------------\n")
+                                archivo_txt.write("DERROTA...\n")
+                                archivo_txt.write("- TIEMPO: "+str(tiempo)+" segundos\n")
+                                archivo_txt.write("- MODO DE JUEGO: "+str(modonombre)+"\n")
+                                archivo_txt.write("- PALABRA: "+str(palabra)+"\n")
+                                archivo_txt.write("- LETRAS ACERTADAS: "+str(lista_aciertos)+"\n")
+                                archivo_txt.write("- LETRAS FALLADAS: "+str(lista_errores)+"\n")
+                                archivo_txt.write("- FECHA: "+time.strftime("%d/%m/%Y %H:%M:%S")+"\n")
+                                archivo_txt.close()
                                 numderrotas=numderrotas+1
                                 fintiem=time.perf_counter()
                                 tiempo=round(fintiem-iniciotiem,2)
@@ -185,6 +230,16 @@ while seguir!="n":
                                 lista_ahorcado.append("O")
                                 print(lista_ahorcado)
                                 print(f"¡Has perdido! La palabra era: {palabra}")
+                                archivo_txt=open("Resultados.txt","a")
+                                archivo_txt.write("------------RESULTADOS DE LA PARTIDA------------\n")
+                                archivo_txt.write("DERROTA...\n")
+                                archivo_txt.write("- TIEMPO: "+str(tiempo)+" segundos\n")
+                                archivo_txt.write("- MODO DE JUEGO: "+str(modonombre)+"\n")
+                                archivo_txt.write("- PALABRA: "+str(palabra)+"\n")
+                                archivo_txt.write("- LETRAS ACERTADAS: "+str(lista_aciertos)+"\n")
+                                archivo_txt.write("- LETRAS FALLADAS: "+str(lista_errores)+"\n")
+                                archivo_txt.write("- FECHA: "+time.strftime("%d/%m/%Y %H:%M:%S")+"\n")
+                                archivo_txt.close()
                                 numderrotas=numderrotas+1
                                 fintiem=time.perf_counter()
                                 tiempo=round(fintiem-iniciotiem,2)
@@ -200,7 +255,18 @@ while seguir!="n":
                                     break
         else:
             if respuesta==palabra:
+                tiempo=round(time.perf_counter()-iniciotiem,2)
                 print((f"¡Has acertado la palabra: {palabra}!"))
+                archivo_txt=open("Resultados.txt","a")
+                archivo_txt.write("------------RESULTADOS DE LA PARTIDA------------\n")
+                archivo_txt.write("VICTORIA!\n")
+                archivo_txt.write("- TIEMPO: "+str(tiempo)+" segundos\n")
+                archivo_txt.write("- MODO DE JUEGO: "+str(modonombre)+"\n")
+                archivo_txt.write("- PALABRA: "+str(palabra)+"\n")
+                archivo_txt.write("- LETRAS ACERTADAS: "+str(lista_aciertos)+"\n")
+                archivo_txt.write("- LETRAS FALLADAS: "+str(lista_errores)+"\n")
+                archivo_txt.write("- FECHA: "+time.strftime("%d/%m/%Y %H:%M:%S")+"\n")
+                archivo_txt.close()
                 numvictorias=numvictorias+1
                 fintiem=time.perf_counter()
                 tiempo=round(fintiem-iniciotiem,2)
@@ -221,6 +287,16 @@ while seguir!="n":
                              print(f"¡Te quedan {3-errores} oportunidades!")
                              if errores==3:
                                 print(f"¡Has perdido! La palabra era: {palabra}")
+                                archivo_txt=open("Resultados.txt","a")
+                                archivo_txt.write("------------RESULTADOS DE LA PARTIDA------------\n")
+                                archivo_txt.write("DERROTA...\n")
+                                archivo_txt.write("- TIEMPO: "+str(tiempo)+" segundos\n")
+                                archivo_txt.write("- MODO DE JUEGO: "+str(modonombre)+"\n")
+                                archivo_txt.write("- PALABRA: "+str(palabra)+"\n")
+                                archivo_txt.write("- LETRAS ACERTADAS: "+str(lista_aciertos)+"\n")
+                                archivo_txt.write("- LETRAS FALLADAS: "+str(lista_errores)+"\n")
+                                archivo_txt.write("- FECHA: "+time.strftime("%d/%m/%Y %H:%M:%S")+"\n")
+                                archivo_txt.close()
                                 numderrotas=numderrotas+1
                                 fintiem=time.perf_counter()
                                 tiempo=round(fintiem-iniciotiem,2)
@@ -261,6 +337,16 @@ while seguir!="n":
                         lista_ahorcado.append("O")
                         print(lista_ahorcado)
                         print(f"¡Has perdido! La palabra era: {palabra}")
+                        archivo_txt=open("Resultados.txt","a")
+                        archivo_txt.write("------------RESULTADOS DE LA PARTIDA------------\n")
+                        archivo_txt.write("DERROTA...\n")
+                        archivo_txt.write("- TIEMPO: "+str(tiempo)+" segundos\n")
+                        archivo_txt.write("- MODO DE JUEGO: "+str(modonombre)+"\n")
+                        archivo_txt.write("- PALABRA: "+str(palabra)+"\n")
+                        archivo_txt.write("- LETRAS ACERTADAS: "+str(lista_aciertos)+"\n")
+                        archivo_txt.write("- LETRAS FALLADAS: "+str(lista_errores)+"\n")
+                        archivo_txt.write("- FECHA: "+time.strftime("%d/%m/%Y %H:%M:%S")+"\n")
+                        archivo_txt.close()
                         numderrotas=numderrotas+1
                         fintiem=time.perf_counter()
                         tiempo=round(fintiem-iniciotiem,2)
