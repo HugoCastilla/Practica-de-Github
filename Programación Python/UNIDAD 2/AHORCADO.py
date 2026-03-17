@@ -385,4 +385,5 @@ while seguir!="n":
 if palabra=="":
     print("¡Está bien, ya jugaremos otro día!")
 else:
+    print(f"Victorias: {numvictorias} | Derrotas: {numderrotas}")
     print("¡Gracias por jugar!")
