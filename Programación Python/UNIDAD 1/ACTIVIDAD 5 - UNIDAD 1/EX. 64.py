@@ -33,4 +33,8 @@ print("Número de impares:", imp)
 print("Número de positivos:", pos)
 print("Número de negativos:", neg)
 print("Número de ceros:", cero)
+<<<<<<< HEAD
 print("Suma total:", sum)
+=======
+print("Suma total:", sum)
+>>>>>>> 73c73322f3acd3325af760d1f91f812f10f4c714
